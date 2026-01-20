@@ -1,0 +1,121 @@
+/* src/styles/Header.css */
+
+/* --- HEADER PRINCIPAL --- */
+.navigation-wrapper {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px 60px;
+    background-color: var(--primary-blue);
+    color: var(--text-grey);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+/* Columnas */
+.left-column, .right-column {
+    flex: 1;
+    text-align: center;
+}
+
+.center-column {
+    flex: 2;
+    text-align: center;
+}
+
+/* Títulos */
+.left-column h1 {
+    font-size: 34px;
+    font-weight: bold;
+    color: var(--text-grey);
+    margin: 0;
+}
+
+/* Logo */
+.banner-image img {
+    max-width: 100px;
+    height: auto;
+    vertical-align: middle;
+}
+
+/* Dirección */
+.address-wrapper {
+    font-style: normal;
+    margin-bottom: 10px;
+}
+
+.address-wrapper a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--text-grey);
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.address-wrapper a:hover {
+    color: var(--accent-gold);
+}
+
+/* Icono */
+.contact-icon {
+    font-size: 2em;
+}
+
+.contact-icon a {
+    color: var(--text-grey);
+    transition: color 0.3s ease;
+}
+
+.contact-icon a:hover {
+    color: var(--accent-gold);
+}
+
+/* --- BARRA DE NAVEGACIÓN (NAV) --- */
+.button-column {
+    background-color: var(--primary-blue);
+    padding-bottom: 15px;
+    margin-top: -4px; /* Fix visual */
+    display: flex;
+    justify-content: center;
+}
+
+.links-wrapper {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    width: 50%; 
+    max-width: 1200px; 
+}
+
+.nav-link {
+    margin: 0 15px;
+}
+
+.nav-link a {
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--text-grey);
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.nav-link a:hover {
+    color: var(--accent-gold);
+    transform: scale(1.1);
+}
+
+/* Responsive básico para el Header */
+@media (max-width: 768px) {
+    .navigation-wrapper {
+        flex-direction: column;
+        padding: 20px 10px;
+        gap: 20px;
+    }
+    .links-wrapper {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 15px;
+    }
+}

@@ -1,0 +1,9 @@
+/* src/styles/variables.css */
+:root {
+    --primary-blue: #09386f;
+    --accent-gold: #E6D847;
+    --text-grey: #cbcbcb;
+    --text-dark: #333333;
+    --white: #ffffff;
+    --font-main: 'Lato', sans-serif;
+}
