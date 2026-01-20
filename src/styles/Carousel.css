@@ -1,0 +1,65 @@
+/* src/styles/Carousel.css */
+
+.carousel-container {
+    position: relative;
+    max-width: 800px; /* Ancho máximo para que no se desmadre */
+    margin: 20px auto 40px auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    background-color: #f0f0f0;
+    aspect-ratio: 3 / 2; /* Mantiene la forma rectangular */
+}
+
+.carousel-slide {
+    display: flex;
+    /* La magia: movemos el div entero a la izquierda o derecha */
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+    height: 100%;
+}
+
+/* Cada imagen ocupa el 100% del espacio visible */
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    flex-shrink: 0; /* Evita que se aplasten */
+}
+
+/* Botones */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(9, 56, 111, 0.7);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.prev { left: 15px; }
+.next { right: 15px; }
+
+.carousel-btn:hover {
+    background-color: var(--accent-gold);
+    color: var(--primary-blue);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Deshabilitar botón si no hay más fotos (Opcional, visual) */
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background-color: #555;
+}

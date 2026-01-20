@@ -157,3 +157,69 @@
     transform: scale(1.03);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
+
+/* ... (El resto del código que ya tenías) ... */
+
+/* --- MODAL (Visor de fotos) --- */
+.modal {
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 2000; /* Encima de todo */
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
+    backdrop-filter: blur(5px); /* Efecto borroso moderno */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInModal 0.3s ease;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    object-fit: contain;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+    font-size: 1.2rem;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 2001;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--accent-gold);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes fadeInModal {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}

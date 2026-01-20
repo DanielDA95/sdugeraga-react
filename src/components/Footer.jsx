@@ -1,13 +1,16 @@
 import React from 'react';
-import '../styles/Footer.css'; // Importamos los estilos
+import { Link } from 'react-router-dom'; // <--- IMPORTANTE: Importamos Link
+import '../styles/Footer.css';
 
 const Footer = () => {
   return (
     <footer className="footer-structure-wrapper">
       
-      {/* Logo Footer */}
+      {/* Logo Footer - Link a Inicio */}
       <div className="footer-image">
-        <img src="/images/logos/logo.png" alt="Logo SD Ugeraga" loading="lazy" />
+        <Link to="/">
+            <img src="/images/logos/logo.png" alt="Logo SD Ugeraga" loading="lazy" />
+        </Link>
       </div>
       
       {/* Nombre Club */}
@@ -15,16 +18,16 @@ const Footer = () => {
         <p className="hours"><strong>SD Ugeraga</strong></p>
       </div>
   
-      {/* Enlaces de Navegación */}
+      {/* Enlaces de Navegación - USAMOS LINK */}
       <nav className="links-wrapper-footer" aria-label="Menú pie de página">
-        <a href="#" className="nav-link-footer">Inicio</a>
-        <a href="#" className="nav-link-footer">Historia</a>
-        <a href="#" className="nav-link-footer">Equipos</a>
-        <a href="#" className="nav-link-footer">Directivos</a>
-        <a href="#" className="nav-link-footer">Contacto</a>
+        <Link to="/" className="nav-link-footer">Inicio</Link>
+        <Link to="/historia" className="nav-link-footer">Historia</Link>
+        <Link to="/equipos" className="nav-link-footer">Equipos</Link>
+        <Link to="/directivos" className="nav-link-footer">Directivos</Link>
+        <Link to="/contacto" className="nav-link-footer">Contacto</Link>
       </nav>
   
-      {/* Redes Sociales */}
+      {/* Redes Sociales - SE QUEDAN COMO <a> (Enlaces externos) */}
       <div className="icons" aria-label="Redes sociales">
           <div className="instagram">
             <a href="https://www.instagram.com/sdugeraga" target="_blank" rel="noopener noreferrer" aria-label="Instagram">

@@ -1,15 +1,27 @@
-import React from 'react';
-import '../styles/Home.css'; // Importamos estilos
+import React, { useState } from 'react'; // 1. Importamos useState
+import '../styles/Home.css';
 
 const Home = () => {
+  // 2. Definimos el ESTADO.
+  // selectedImage valdrá 'null' cuando esté cerrado, o un objeto {src, alt} cuando esté abierto.
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  // Función para abrir: guarda los datos de la foto clicada
+  const openModal = (src, alt) => {
+    setSelectedImage({ src, alt });
+  };
+
+  // Función para cerrar: devuelve el estado a null
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <main>
-        {/* 1. HERO IMAGE */}
-        <section className="hero-section" aria-label="Imagen destacada del equipo">           
-            {/* La imagen está definida en el CSS como background */}
-        </section>
+        {/* HERO IMAGE */}
+        <section className="hero-section" aria-label="Imagen destacada del equipo"></section>
         
-        {/* 2. HAZTE SOCIO */}
+        {/* HAZTE SOCIO */}
         <section className="subscribe"> 
             <div className="top-heading">
                 <a 
@@ -23,7 +35,7 @@ const Home = () => {
             </div>
         </section>
         
-        {/* 3. NOTICIAS Y CLASIFICACIÓN */}
+        {/* NOTICIAS */}
         <section className="features-section">
             <div className="news-wrapper">
                 <article className="news-item">
@@ -44,18 +56,64 @@ const Home = () => {
             </div>
         </section>
         
-        {/* 4. GALERÍA DE IMÁGENES */}
+        {/* GALERÍA DE IMÁGENES */}
         <section className="gallery-section">
             <h2 className="gallery-title">Galería de Imágenes</h2>
             <div className="gallery-wrapper">
-                {/* Nota: En el futuro haremos un .map() aquí, pero por ahora estático */}
-                <img src="/images/Noticias/01.jpg" alt="Partido del equipo local" className="gallery-image" loading="lazy" />
-                <img src="/images/Noticias/02.jpg" alt="Entrenamiento" className="gallery-image" loading="lazy" />
-                <img src="/images/Noticias/03.jpg" alt="Celebración de gol" className="gallery-image" loading="lazy" />
-                <img src="/images/Noticias/04.jpg" alt="Jugada defensiva" className="gallery-image" loading="lazy" />
-                <img src="/images/Noticias/05.jpg" alt="Afición animando" className="gallery-image" loading="lazy" />
+                {/* Al hacer click, llamamos a openModal con los datos de ESA foto */}
+                <img 
+                    src="/images/Noticias/01.jpg" 
+                    alt="Partido del equipo local" 
+                    className="gallery-image" 
+                    loading="lazy"
+                    onClick={() => openModal("/images/Noticias/01.jpg", "Partido del equipo local")} 
+                />
+                <img 
+                    src="/images/Noticias/02.jpg" 
+                    alt="Entrenamiento" 
+                    className="gallery-image" 
+                    loading="lazy"
+                    onClick={() => openModal("/images/Noticias/02.jpg", "Entrenamiento")} 
+                />
+                <img 
+                    src="/images/Noticias/03.jpg" 
+                    alt="Celebración de gol" 
+                    className="gallery-image" 
+                    loading="lazy"
+                    onClick={() => openModal("/images/Noticias/03.jpg", "Celebración de gol")} 
+                />
+                <img 
+                    src="/images/Noticias/04.jpg" 
+                    alt="Jugada defensiva" 
+                    className="gallery-image" 
+                    loading="lazy"
+                    onClick={() => openModal("/images/Noticias/04.jpg", "Jugada defensiva")} 
+                />
+                <img 
+                    src="/images/Noticias/05.jpg" 
+                    alt="Afición animando" 
+                    className="gallery-image" 
+                    loading="lazy"
+                    onClick={() => openModal("/images/Noticias/05.jpg", "Afición animando")} 
+                />
             </div>
         </section>
+
+        {/* 3. EL MODAL (Renderizado Condicional) */}
+        {/* Solo se pinta si selectedImage NO es null */}
+        {selectedImage && (
+            <div className="modal" onClick={closeModal}>
+                <span className="close" onClick={closeModal}>&times;</span>
+                {/* stopPropagation evita que al hacer click en la foto se cierre el modal */}
+                <img 
+                    className="modal-content" 
+                    src={selectedImage.src} 
+                    alt={selectedImage.alt}
+                    onClick={(e) => e.stopPropagation()} 
+                />
+                <div id="caption">{selectedImage.alt}</div>
+            </div>
+        )}
     </main>
   );
 };
